@@ -1,0 +1,13 @@
+https://tomcat.apache.org/tomcat-10.0-doc/windows-service-howto.html#Multiple_Instances
+Windows Service How-To
+
+
+Install the service named 'MyService'
+C:\> service.bat install MyService
+
+
+
+
+
+https://qiita.com/wawon1111/items/486763e3dc2e9253a5dc
+tomcatで登録したサービス名の変更方法
