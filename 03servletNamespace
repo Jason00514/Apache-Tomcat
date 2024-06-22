@@ -1,0 +1,70 @@
+Upgrading Considerations:
+When upgrading between major versions, particularly from Tomcat 9 to Tomcat 10, 
+the namespace change from javax to jakarta is a critical factor. 
+
+This requires significant modifications in the application's source code and dependencies. 
+Additionally, reviewing and updating the configuration files to align with the new version's specifications is necessary.
+
+------------------tomcat 9 javax.servlet start----------------
+Example of a Servlet Migration:
+From Tomcat 9 (Servlet 4.0):
+java
+コードをコピーする
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+
+@WebServlet("/example")
+public class ExampleServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.getWriter().write("Hello, World!");
+    }
+}
+------------------tomcat 9  javax.servlet end----------------
+
+------------------tomcat 10  jakarta.servlet start----------------
+To Tomcat 10 (Servlet 5.0):
+java
+コードをコピーする
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import java.io.IOException;
+
+@WebServlet("/example")
+public class ExampleServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.getWriter().write("Hello, World!");
+    }
+}
+------------------tomcat 10 jakarta.servlet end---------------
+
+
+-------------------------------------------------------------------------------------------------------------------
+Tomcat has undergone various significant upgrades over its versions. 
+Some of the most notable upgrades involve performance improvements, new features, and compliance with updated specifications. 
+Below are some key upgrades across different major versions of Tomcat:
+
+Tomcat 8.0 to 8.5:
+HTTP/2 Support: Tomcat 8.5 introduced support for HTTP/2, enhancing performance and resource utilization for web applications.
+Improved Memory Management: Enhancements in memory management and resource handling, providing better performance and stability.
+Simplified Configuration: Reduced the complexity of the default configuration for easier setup and maintenance.
+
+Tomcat 8.5 to 9.0:
+Servlet 4.0 Specification: Full implementation of the Servlet 4.0 specification, including HTTP/2 support.
+JSP 2.3 and EL 3.0: Support for the latest JSP and Expression Language versions, offering more features and better integration.
+OpenID Connect Authentication: Introduction of an OpenID Connect authentication module for more flexible security configurations.
+Resource Management Improvements: Enhancements in how Tomcat manages resources like threads, connections, and memory.
+
+Tomcat 9.0 to 10.0:
+Jakarta EE 9: The most significant change is the transition from the Java EE namespace (javax.) to the Jakarta EE namespace (jakarta.). 
+This affects all APIs and requires application code changes.
+Servlet 5.0 Specification: Implementation of the Servlet 5.0 specification, aligned with Jakarta EE 9.
+Improved HTTP/2 and HTTP/3 Support: Continued improvements in HTTP/2 support and experimental support for HTTP/3.
+TLS Configuration: Enhanced TLS (Transport Layer Security) configuration options for better security and performance.
+WebSocket 2.0: Support for the latest WebSocket API, allowing for more efficient real-time communication.
+
+
+Summary:
+The upgrades in Tomcat across versions typically involve improved support for the latest Java EE/Jakarta EE specifications, better performance, 
+enhanced security features, and additional capabilities like HTTP/2 and HTTP/3 support. 
+When planning an upgrade, careful consideration of the changes in API and configuration requirements is essential to ensure a smooth transition.
